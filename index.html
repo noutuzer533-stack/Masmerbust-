@@ -1,40 +1,61 @@
-// Пазлы
-    function startPuzzle() {
-        const puzzleContainer = document.getElementById("puzzle");
-        puzzleContainer.innerHTML = 
-            <p><strong>Перетащите элементы в правильный порядок:</strong></p>
-            <div>Шаг 1</div>
-            <div>Шаг 2</div>
-            <div>Шаг 3</div>
-            <div>Шаг 4</div>
-        ;
-    }
+/* Основной стиль для меню */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    // Перетаскивание
-    function startDragDrop() {
-        const dragdropContainer = document.getElementById("dragdrop");
-        dragdropContainer.innerHTML = 
-            <p><strong>Перетащите элементы:</strong></p>
-            <div id="dragItem" draggable="true" ondragstart="drag(event)">Перетащить меня</div>
-            <div id="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)">Перетащите сюда</div>
-        ;
-    }
+nav {
+    background-color: #333;
+}
 
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
 
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
+.menu li {
+    position: relative;
+}
 
-    function drop(ev) {
-        ev.preventDefault();
-        const data = ev.dataTransfer.getData("text");
-        const draggedElement = document.getElementById(data);
-        ev.target.appendChild(draggedElement);
-    }
-</script>
+.menu li a {
+    color: white;
+    padding: 14px 20px;
+    display: block;
+    text-decoration: none;
+}
 
-</body>
-</html>
+.menu li a:hover {
+    background-color: #575757;
+}
+
+/* Стиль для выпадающего меню */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
